@@ -25,12 +25,12 @@ bot.help((ctx) => {
     ctx.replyWithMarkdown(helpMsg);
 });
 
-bot.command('dog', getDog(ctx));
-bot.command('cat', getCat(ctx));
-bot.command('lingo', lingo(ctx));
+bot.command('dog', ((ctx) => getDog(ctx)()));
+bot.command('cat', ((ctx) => getCat(ctx)()));
+bot.command('lingo', ((ctx) => lingo(ctx)()));
 
-bot.on('message', greet(ctx));
-bot.on(['sticker', 'photo'], stickerPhotoReply(ctx))
+bot.on('message', ((ctx) => greet(ctx)()));
+bot.on(['sticker', 'photo'], ((ctx) => stickerPhotoReply(ctx)()));
 
 module.exports = (req, resp) => {
     if (req.method === 'POST') bot.handleUpdate(req.body, resp)

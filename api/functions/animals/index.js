@@ -1,5 +1,5 @@
 /* Add functions for animals command */
-import axios from 'axios';
+import axios from "axios";
 import { Extra } from "telegraf";
 
 export const getDog = (ctx) => {
