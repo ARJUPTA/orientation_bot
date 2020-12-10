@@ -1,8 +1,9 @@
-import { Telegraf, Extra } from "telegraf";
+import { Telegraf } from "telegraf";
 import dotenv from 'dotenv';
 import { getCat, getDog } from './functions/animals';
 import { lingo } from './functions/lingo';
 import { greet, stickerPhotoReply } from "./functions/utils";
+import { wordSearch } from "./functions/dictionary";
 
 dotenv.config();
 const bot = new Telegraf(process.env.TOKEN);
@@ -15,6 +16,7 @@ bot.start((ctx)=>{
 
 bot.catch((err, ctx) => {
     console.log('Error, ', ctx.from.first_name)
+    console.log(err.message)
     const errMsg = "Did not quite get what you said, please contact @aishwary023 for the issue!";
     ctx.reply(errMsg);
 });
