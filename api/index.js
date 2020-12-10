@@ -1,10 +1,10 @@
-const axios = require('axios')
-const dotenv = require('dotenv');
-dotenv.config();
-const { Telegraf } = require('telegraf')
-const Extra = require('telegraf/extra')
-const bot = new Telegraf(process.env.TOKEN);
+import axios from 'axios';
+import { Telegraf, Extra } from "telegraf";
+import dotenv from 'dotenv';
 
+dotenv.config();
+
+const bot = new Telegraf(process.env.TOKEN);
 bot.start((ctx)=>{
     console.log(ctx.from.first_name,": /start");
     const name = ctx.message.from ? ctx.message.from.first_name : 'Fachhe';
@@ -81,4 +81,4 @@ module.exports = (req, resp) => {
     else resp.status(200).send('Hello world :)!')
 }
 
-// bot.launch();
+bot.launch();

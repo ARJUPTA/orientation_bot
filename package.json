@@ -5,12 +5,29 @@
   "main": "index.js",
   "dependencies": {
     "axios": "^0.20.0",
+    "core-js": "3",
     "dotenv": "^8.2.0",
+    "npm-run-all": "^4.1.5",
     "telegraf": "^3.38.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
+    "@babel/plugin-transform-arrow-functions": "^7.12.1",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.12.10",
+    "rimraf": "^3.0.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist",
+    "transpile": "babel ./api --out-dir dist",
+    "build": "npm-run-all clean transpile",
+    "serve": "node ./dist/index.js",
+    "dev": "npm-run-all build serve",
+    "prod": "npm-run-all build serve"
   },
   "author": "",
   "license": "ISC"
