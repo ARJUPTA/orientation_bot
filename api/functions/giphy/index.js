@@ -1,0 +1,1 @@
+/* Add functions for gif's implementation. */
