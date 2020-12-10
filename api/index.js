@@ -30,6 +30,8 @@ bot.help((ctx) => {
 bot.command('dog', (ctx) => getDog(ctx));
 bot.command('cat', (ctx) => getCat(ctx));
 bot.command('lingo', (ctx) => lingo(ctx));
+bot.command('dict', (ctx) => wordSearch(ctx));
+bot.command('dictionary', (ctx) => wordSearch(ctx));
 
 bot.on('message', (ctx) => greet(ctx));
 bot.on(['sticker', 'photo'], (ctx) => stickerPhotoReply(ctx));
