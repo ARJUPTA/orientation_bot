@@ -3,7 +3,6 @@ import { Telegraf, Extra } from "telegraf";
 import dotenv from 'dotenv';
 
 dotenv.config();
-
 const bot = new Telegraf(process.env.TOKEN);
 bot.start((ctx)=>{
     console.log(ctx.from.first_name,": /start");
@@ -15,6 +14,12 @@ bot.catch((err, ctx) => {
     console.log('Error, ', ctx.from.first_name)
     const errMsg = "Did not quite get what you said, please contact @aishwary023 for the issue!";
     ctx.reply(errMsg);
+})
+
+bot.help((ctx) => {
+    console.log(ctx.from.first_name,": /help")
+    const helpMsg ="/lingo for lingo \n\n/dog - For a random dog photo\n\n/cat - For a random cat photo\n\nWhy dogs and cats? Because I am a wholesome bot!\n\n/help - For all available function\nGot any other query? Contact these people anytime: ";
+    ctx.replyWithMarkdown(helpMsg);
 })
 
 bot.on(['sticker', 'photo'], (ctx) => {
@@ -40,15 +45,8 @@ bot.command('cat', (ctx) =>{
         url_photo = response.data[0].url.toString();
         ctx.replyWithPhoto(url_photo, Extra.caption(`Here's a cat for you!`).markdown())
     }).catch(function (response){
-
         ctx.reply(`Some error occured while fetching the photograph. You can get a dog photo with /dog! \n:)`);
     });
-})
-
-bot.help((ctx) => {
-    console.log(ctx.from.first_name,": /help")
-    const helpMsg ="/lingo for lingo \n\n/dog - For a random dog photo\n\n/cat - For a random cat photo\n\nWhy dogs and cats? Because I am a wholesome bot!\n\n/help - For all available function\nGot any other query? Contact these people anytime: ";
-    ctx.replyWithMarkdown(helpMsg);
 })
 
 // bot.on('new_chat_members', async (ctx) => {

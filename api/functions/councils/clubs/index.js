@@ -1,0 +1,1 @@
+/* Add functions for animal photos command */
