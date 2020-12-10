@@ -26,6 +26,7 @@
     "transpile": "babel ./api --out-dir dist",
     "build": "npm-run-all clean transpile",
     "serve": "node ./dist/index.js",
+    "inform": "echo \"Bot server is running:\"",
     "dev": "npm-run-all build serve",
     "prod": "npm-run-all build serve"
   },
