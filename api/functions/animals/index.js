@@ -2,7 +2,15 @@
 import axios from "axios";
 import { Extra } from "telegraf";
 
-export const getDog = (ctx) => {
+export const starter = async (ctx) => {
+  console.log(ctx.from.first_name, ": /animals")
+  const reply = 'Hmm, it appears like you are a nature lover, check folowing commands to explore our animal collection:\n\n1. /duck - For a random duck photo\n2. /fox - For a random fox photo\n3. /bunny - For a random bunny photo\n4. /dog - For a random dog photo\n5. /cat - For a random cat photo\n'
+  try {
+    await ctx.reply(reply)
+  } catch(e) {
+    await ctx.reply(`Some error occured, please try later! Sorry for inconvenience\n:)`);
+  }
+}
   console.log(ctx.from.first_name, ": /dog")
   let url_photo = ""
   axios.get("https://dog.ceo/api/breeds/image/random").then(function (response) {

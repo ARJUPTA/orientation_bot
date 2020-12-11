@@ -37,6 +37,7 @@ bot.help(async (ctx) => {
     }
 });
 
+bot.command('animals', (ctx) => starter(ctx));
 bot.command('dog', (ctx) => getDog(ctx));
 bot.command('cat', (ctx) => getCat(ctx));
 bot.command('fox', (ctx) => getFox(ctx));
