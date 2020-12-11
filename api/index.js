@@ -7,6 +7,8 @@ import { getMeme, getMemeCommands } from "./functions/memes";
 import { googleSearch, imageSearch } from "./functions/google-search";
 import { getGif } from "./functions/giphy";
 import { wordSearch } from "./functions/dictionary";
+import { councils } from "./functions/councils";
+import { cc, fmc, gnsc, sntc, ssc } from "./functions/councils/clubs";
 
 dotenv.config();
 const bot = new Telegraf(process.env.TOKEN);
@@ -24,10 +26,15 @@ bot.catch((err, ctx) => {
     ctx.reply(errMsg);
 });
 
-bot.help((ctx) => {
+bot.help(async (ctx) => {
     console.log(ctx.from.first_name,": /help")
-    const helpMsg ="/dict or /dictionary for using dictionary\n\n/lingo for lingo \n\n/dog - For a random dog photo\n\n/cat - For a random cat photo\n\nWhy dogs and cats? Because I am a wholesome bot!\n\n/help - For all available function\nGot any other query? Contact these people anytime: ";
-    ctx.replyWithMarkdown(helpMsg);
+    const helpMsg ="/councils - Info about IIT-BHU Gymkhana coucils and clubs\n\n/dict or /dictionary - For using dictionary\n\n/lingo for lingo \n\n/dog - For a random dog photo\n\n/cat - For a random cat photo\n\nWhy dogs and cats? Because I am a wholesome bot!\n\n/help - For all available function\nGot any other query? Contact these people anytime: ";
+    try {
+        await ctx.replyWithMarkdown(helpMsg);
+    } catch (e) {
+        console.log(e)
+        ctx.reply('Facing server issues, try again later.\nSorry for inconvenience.')
+    }
 });
 
 bot.command('dog', (ctx) => getDog(ctx));
@@ -51,6 +58,13 @@ bot.command('google', (ctx) => googleSearch(ctx));
 bot.command('image', (ctx) => imageSearch(ctx));
 
 bot.command('gif', (ctx) => getGif(ctx))
+
+bot.command('councils', (ctx) => councils(ctx));
+bot.command('sntc', (ctx) => sntc(ctx));
+bot.command('ssc', (ctx) => ssc(ctx));
+bot.command('cc', (ctx) => cc(ctx));
+bot.command('gnsc', (ctx) => gnsc(ctx));
+bot.command('fmc', (ctx) => fmc(ctx));
 
 bot.on('message', (ctx) => greet(ctx));
 bot.on(['sticker', 'photo'], (ctx) => stickerPhotoReply(ctx));
