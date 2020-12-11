@@ -42,3 +42,18 @@ export const getFox = async (ctx) => {
     await ctx.reply(`Some error occured while fetching the photograph. You can get a fox photo with /fox! \n:)`);
   }
 }
+export const getBunnies = async (ctx) => {
+  console.log(ctx.from.first_name,": /bunny")
+  try {
+    let response = await axios.get('https://api.bunnies.io/v2/loop/random/?media=gif,png')
+    if(response.status === 200 ){
+      const data = response.data
+      ctx.replyWithPhoto(data.media.gif.toString(), Extra.caption(`Here's a bunny for you!`).markdown())
+    } else {
+      await ctx.reply(`Some error occured while fetching the photograph. You can get a bunny photo with /bunny! \n:)`);
+    }
+  } catch (e) {
+    console.log(e.message)
+    await ctx.reply(`Some error occured while fetching the photograph. You can get a bunny photo with /bunny! \n:)`);
+  }
+}
