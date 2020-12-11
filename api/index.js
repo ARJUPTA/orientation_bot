@@ -2,7 +2,7 @@ import { Telegraf } from "telegraf";
 import dotenv from 'dotenv';
 import { getBunnies, getCat, getDog, getDuck, getFox, starter } from './functions/animals';
 import { lingo } from './functions/lingo';
-import { greet, stickerPhotoReply } from "./functions/utils";
+import { easteregg, greet, stickerPhotoReply } from "./functions/utils";
 import { getMeme, getMemeCommands } from "./functions/memes";
 import { googleSearch, imageSearch } from "./functions/google-search";
 import { getGif } from "./functions/giphy";
@@ -16,7 +16,7 @@ const bot = new Telegraf(process.env.TOKEN);
 bot.start((ctx)=>{
     console.log(ctx.from.first_name,": /start");
     const name = ctx.message.from ? ctx.message.from.first_name : 'Fachhe';
-    ctx.reply(`Hey ${name}! Welcome to the BHU Fam! type /help for list of commands`);
+    ctx.reply(`Hey ${name}! Welcome! type /help for list of commands`);
 });
 
 bot.catch((err, ctx) => {
@@ -28,9 +28,10 @@ bot.catch((err, ctx) => {
 
 bot.help(async (ctx) => {
     console.log(ctx.from.first_name,": /help")
-    const helpMsg ="/councils - Info about IIT-BHU Gymkhana coucils and clubs\n\n/dict or /dictionary - For using dictionary\n\n/lingo for lingo \n\n/animals - to explore animal collection\n\n/help - For all available function\nGot any other query? Contact these people anytime: ";
+    
+    const helpMsg ="<strong>HELP-101</strong>\n\n/councils - Info about all councils and clubs!\n\n/dict or /dictionary - Search the meaning of any word you want! \n\n/lingo College ki lingo! \n\n/animals - Henlo human, do me a click, get a phomto!\n\n/meme or /memes - Who does not like memes?\n\n/google - Search anything!\n\n/image image search! directly from your chat window!\n\n/gif Search for <s>GFs</s> GIFs\n\n/help - For all available function\n\n(👀 there is an easter egg somewhere in this bot, try to find that command, if you do, a gift awaits you)";
     try {
-        await ctx.replyWithMarkdown(helpMsg);
+        await ctx.replyWithHTML(helpMsg);
     } catch (e) {
         console.log(e)
         await ctx.reply('Facing server issues, try again later.\nSorry for inconvenience.')
@@ -54,6 +55,7 @@ bot.command('randomMeme', (ctx)=> getMeme(ctx, 'memes'));
 bot.command('wholesomeMeme', (ctx)=> getMeme(ctx, 'wholesomememes'));
 bot.command('indianMeme', (ctx)=> getMeme(ctx, 'IndianMeyMeys'));
 bot.command('memeEconomy', (ctx)=> getMeme(ctx, 'MemeEconomy'));
+bot.command('merrychristmas',(ctx) => easteregg(ctx));
 bot.command('historyMeme', (ctx)=> getMeme(ctx, 'HistoryMemes'));
 bot.command('animeMeme', (ctx) => getMeme(ctx, 'Animemes'));
 bot.command('toorealMeme', (ctx) => getMeme(ctx, '2meirl4meirl'));

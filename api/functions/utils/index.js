@@ -17,3 +17,7 @@ export const stickerPhotoReply = async (ctx) => {
     console.log(ctx.from.first_name,": sticker");
     ctx.reply('Cool!');
 }
+
+export const easteregg = (ctx) => {
+  ctx.reply("Contact @aishwary023. Send the flag - bot{f0undth3ea5teregg} as message. 🎊🎊")
+}
