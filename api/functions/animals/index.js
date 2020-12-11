@@ -11,27 +11,36 @@ export const starter = async (ctx) => {
     await ctx.reply(`Some error occured, please try later! Sorry for inconvenience\n:)`);
   }
 }
+export const getDog = async (ctx) => {
   console.log(ctx.from.first_name, ": /dog")
-  let url_photo = ""
-  axios.get("https://dog.ceo/api/breeds/image/random").then(function (response) {
-    url_photo = response.data.message.toString();
-    ctx.replyWithPhoto(url_photo, Extra.caption(`Here's a dog for you!`).markdown())
-  // eslint-disable-next-line no-unused-vars
-  }).catch(function (response) {
-    ctx.reply(`Some error occured while fetching the photograph. You can get a cat photo with /cat! \n:)`);
-  });
+  try {
+    const response = await axios.get("https://dog.ceo/api/breeds/image/random")
+    if(response.status === 200) {
+      const data = response.data
+      await ctx.replyWithPhoto(data.message.toString(), Extra.caption(`Here's a dog for you!`).markdown())
+    } else {
+      await ctx.reply(`Some error occured while fetching the photograph. You can get a dog photo with /dog! \n:)`);
+    }
+  } catch(e) {
+    console.log(e.message)
+    await ctx.reply(`Some error occured while fetching the photograph. You can get a dog photo with /dog! \n:)`);
+  }
 }
 
-export const getCat = (ctx) => {
+export const getCat = async (ctx) => {
   console.log(ctx.from.first_name,": /cat")
-  let url_photo = ""
-  axios.get("https://api.thecatapi.com/v1/images/search").then(function (response){
-      url_photo = response.data[0].url.toString();
-      ctx.replyWithPhoto(url_photo, Extra.caption(`Here's a cat for you!`).markdown())
-  // eslint-disable-next-line no-unused-vars
-  }).catch(function (response){
-      ctx.reply(`Some error occured while fetching the photograph. You can get a dog photo with /dog! \n:)`);
-  });
+  try {
+    const response = await axios.get("https://api.thecatapi.com/v1/images/search")
+    if(response.status === 200) {
+      const data = response.data
+      await ctx.replyWithPhoto(data[0].url.toString(), Extra.caption(`Here's a cat for you!`).markdown())
+    } else {
+      await ctx.reply(`Some error occured while fetching the photograph. You can get a cat photo with /cat! \n:)`);
+    }
+  } catch(e) {
+    console.log(e.message)
+    await ctx.reply(`Some error occured while fetching the photograph. You can get a cat photo with /cat! \n:)`);
+  }
 }
 
 export const getFox = async (ctx) => {
@@ -45,7 +54,6 @@ export const getFox = async (ctx) => {
       await ctx.reply(`Some error occured while fetching the photograph. You can get a fox photo with /fox! \n:)`);
     }
   } catch (e) {
-    console.log('Line NO.: ', 41)
     console.log(e.message)
     await ctx.reply(`Some error occured while fetching the photograph. You can get a fox photo with /fox! \n:)`);
   }

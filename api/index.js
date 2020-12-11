@@ -33,7 +33,7 @@ bot.help(async (ctx) => {
         await ctx.replyWithMarkdown(helpMsg);
     } catch (e) {
         console.log(e)
-        ctx.reply('Facing server issues, try again later.\nSorry for inconvenience.')
+        await ctx.reply('Facing server issues, try again later.\nSorry for inconvenience.')
     }
 });
 
@@ -43,6 +43,7 @@ bot.command('cat', (ctx) => getCat(ctx));
 bot.command('fox', (ctx) => getFox(ctx));
 bot.command('duck', (ctx) => getDuck(ctx));
 bot.command('bunny', (ctx) => getBunnies(ctx));
+
 bot.command('lingo', (ctx) => lingo(ctx));
 bot.command('dict', (ctx) => wordSearch(ctx));
 bot.command('dictionary', (ctx) => wordSearch(ctx));
