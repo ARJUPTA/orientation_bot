@@ -47,7 +47,9 @@ export const wordSearch = async (ctx) => {
                 })
               })
             });
-            ctx.replyWithAudio(audio, Extra.caption(`pronunciation for ${content[2]}`))
+            if (audio) {
+              ctx.replyWithAudio(audio, Extra.caption(`pronunciation for ${content[2]}`))
+            }
             ctx.replyWithMarkdown(reply)
           }
         } catch (e) {
