@@ -5,6 +5,7 @@ import { lingo } from './functions/lingo';
 import { greet, stickerPhotoReply } from "./functions/utils";
 import { wordSearch } from "./functions/dictionary";
 import { councils } from "./functions/councils";
+import { cc, fmc, gnsc, sntc, ssc } from "./functions/councils/clubs";
 
 dotenv.config();
 const bot = new Telegraf(process.env.TOKEN);
@@ -39,6 +40,11 @@ bot.command('lingo', (ctx) => lingo(ctx));
 bot.command('dict', (ctx) => wordSearch(ctx));
 bot.command('dictionary', (ctx) => wordSearch(ctx));
 bot.command('councils', (ctx) => councils(ctx));
+bot.command('sntc', (ctx) => sntc(ctx));
+bot.command('ssc', (ctx) => ssc(ctx));
+bot.command('cc', (ctx) => cc(ctx));
+bot.command('gnsc', (ctx) => gnsc(ctx));
+bot.command('fmc', (ctx) => fmc(ctx));
 
 bot.on('message', (ctx) => greet(ctx));
 bot.on(['sticker', 'photo'], (ctx) => stickerPhotoReply(ctx));
