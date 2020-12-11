@@ -42,6 +42,23 @@ export const getFox = async (ctx) => {
     await ctx.reply(`Some error occured while fetching the photograph. You can get a fox photo with /fox! \n:)`);
   }
 }
+
+export const getDuck = async (ctx) => {
+  console.log(ctx.from.first_name,": /duck")
+  try {
+    let response = await axios.get('https://random-d.uk/api/v2/random')
+    if(response.status === 200 ){
+      const data = response.data
+      ctx.replyWithPhoto(data.url.toString(), Extra.caption(`Here's a duck for you!`).markdown())
+    } else {
+      await ctx.reply(`Some error occured while fetching the photograph. You can get a duck photo with /duck! \n:)`);
+    }
+  } catch (e) {
+    console.log(e.message)
+    await ctx.reply(`Some error occured while fetching the photograph. You can get a duck photo with /duck! \n:)`);
+  }
+}
+
 export const getBunnies = async (ctx) => {
   console.log(ctx.from.first_name,": /bunny")
   try {

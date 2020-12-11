@@ -40,6 +40,7 @@ bot.help(async (ctx) => {
 bot.command('dog', (ctx) => getDog(ctx));
 bot.command('cat', (ctx) => getCat(ctx));
 bot.command('fox', (ctx) => getFox(ctx));
+bot.command('duck', (ctx) => getDuck(ctx));
 bot.command('bunny', (ctx) => getBunnies(ctx));
 bot.command('lingo', (ctx) => lingo(ctx));
 bot.command('dict', (ctx) => wordSearch(ctx));
