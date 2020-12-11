@@ -44,6 +44,7 @@ bot.command('dict', (ctx) => wordSearch(ctx));
 bot.command('dictionary', (ctx) => wordSearch(ctx));
 
 bot.command('meme', (ctx) => getMemeCommands(ctx));
+bot.command('memes', (ctx) => getMemeCommands(ctx));
 bot.command('randomMeme', (ctx)=> getMeme(ctx, 'memes'));
 bot.command('wholesomeMeme', (ctx)=> getMeme(ctx, 'wholesomememes'));
 bot.command('indianMeme', (ctx)=> getMeme(ctx, 'IndianMeyMeys'));

@@ -6,7 +6,7 @@ export const getGif = (ctx) => {
     console.log(ctx.from.first_name, ": /gifSearch")
     const query = ctx.update.message.text.slice(4).trim().toLowerCase();
     if(!query){
-        ctx.reply("Please enter a valid query!")
+        ctx.replyWithMarkdown("Please enter a valid query!\nUse the format:\n***/gif <query>***")
         return;
     }
     const url = 'https://api.giphy.com/v1/gifs/random?tag='+ query +'&api_key=' + process.env.GIPHY_API
