@@ -4,6 +4,7 @@ import { getCat, getDog } from './functions/animals';
 import { lingo } from './functions/lingo';
 import { greet, stickerPhotoReply } from "./functions/utils";
 import { wordSearch } from "./functions/dictionary";
+import { councils } from "./functions/councils";
 
 dotenv.config();
 const bot = new Telegraf(process.env.TOKEN);
@@ -21,10 +22,15 @@ bot.catch((err, ctx) => {
     ctx.reply(errMsg);
 });
 
-bot.help((ctx) => {
+bot.help(async (ctx) => {
     console.log(ctx.from.first_name,": /help")
-    const helpMsg ="/dict or /dictionary for using dictionary\n\n/lingo for lingo \n\n/dog - For a random dog photo\n\n/cat - For a random cat photo\n\nWhy dogs and cats? Because I am a wholesome bot!\n\n/help - For all available function\nGot any other query? Contact these people anytime: ";
-    ctx.replyWithMarkdown(helpMsg);
+    const helpMsg ="/councils - Info about IIT-BHU Gymkhana coucils and clubs\n\n/dict or /dictionary - For using dictionary\n\n/lingo for lingo \n\n/dog - For a random dog photo\n\n/cat - For a random cat photo\n\nWhy dogs and cats? Because I am a wholesome bot!\n\n/help - For all available function\nGot any other query? Contact these people anytime: ";
+    try {
+        await ctx.replyWithMarkdown(helpMsg);
+    } catch (e) {
+        console.log(e)
+        ctx.reply('Facing server issues, try again later.\nSorry for inconvenience.')
+    }
 });
 
 bot.command('dog', (ctx) => getDog(ctx));
@@ -32,6 +38,7 @@ bot.command('cat', (ctx) => getCat(ctx));
 bot.command('lingo', (ctx) => lingo(ctx));
 bot.command('dict', (ctx) => wordSearch(ctx));
 bot.command('dictionary', (ctx) => wordSearch(ctx));
+bot.command('councils', (ctx) => councils(ctx));
 
 bot.on('message', (ctx) => greet(ctx));
 bot.on(['sticker', 'photo'], (ctx) => stickerPhotoReply(ctx));
