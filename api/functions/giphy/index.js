@@ -1,6 +1,5 @@
 /* Add functions for gif's implementation. */
 import axios from "axios";
-import { Extra } from "telegraf";
 
 export const getGif = (ctx) => {
     console.log(ctx.from.first_name, ": /gifSearch")
