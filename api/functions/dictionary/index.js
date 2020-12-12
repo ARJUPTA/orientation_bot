@@ -54,7 +54,7 @@ export const wordSearch = async (ctx) => {
           }
         } catch (e) {
           if(e.response.status === 404) {
-            ctx.reply(e.response.data.title)
+            ctx.reply(e.response.data.title.toString())
           } else {
             ctx.reply("Did not quite get what you said, please contact @aishwary023 for the issue!")
           }

@@ -38,7 +38,7 @@ export const imageSearch = (ctx) => {
         var numOfResult = 3;
         for(var i = 0; i < numOfResult; i++)
         {
-            ctx.replyWithPhoto(response.data.items[i].link, Extra.caption(response.data.items[0].title))
+            ctx.replyWithPhoto(response.data.items[i].link, Extra.caption(response.data.items[0].title.toString()))
         }
     }).catch(function (response) {
         console.log(response)

@@ -83,6 +83,18 @@ bot.command('easteregg', (ctx) => {
     ctx.replyWithMarkdown("This is not the easter egg, but here is a hint:\n\n Hint lies in the video: [Easter egg](https://youtu.be/i1EU-_Qe_28)")
 })
 
+bot.command('egg', (ctx) => {
+    ctx.reply('Wow smarty pants! Such intelligence much wow -_-')
+})
+
+bot.command('easter', (ctx) => {
+    ctx.reply('Nikal, pehli fursat mai nikal')
+})
+
+bot.command('ganja', (ctx) => {
+    ctx.replyWithPhoto('https://i.ytimg.com/vi/j6aeSSKv7Sg/maxresdefault.jpg', Extra.caption('SS taken, reporting to DOSA!'))
+})
+
 bot.command('insult', (ctx) => getInsult(ctx));
 
 bot.on('message', (ctx) => greet(ctx));

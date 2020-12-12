@@ -5,14 +5,33 @@ import * as quotes from './quotes'
 export const greet = async (ctx) => {
   console.log(ctx.from.first_name, ": ", ctx.message.text)
   var reply = "";
-  if (['hi', 'hello', 'hey', 'namaste'].indexOf(ctx.message.text.toString().toLowerCase()) >= 0) {
-    const name = ctx.message.from ? ctx.message.from.first_name : "Fachhe";
-    reply = "Hello " + name
-  }
-  else {
-    reply = "Har Har Mahadev!";
-  }
-  ctx.reply(reply);
+  var greet = ['hi', 'hello', 'hey', 'namaste'];
+    for(var i = 0; i <= greet.length; i++)
+    {
+      if(ctx.message.text.toString().toLowerCase().includes(greet[i]))
+      {
+        const name = ctx.message.from ? ctx.message.from.first_name : "Fachhe";
+        reply = "Hello " + name
+        ctx.reply(reply);
+        return;
+      }
+    }
+
+    var tharak = ['love', 'i love you', 'i luv you', 'luv', 'lub', 'i luv u', 'gf', 'girlfriend'];
+    for(var i = 0; i <= tharak.length; i++)
+    {
+      if(ctx.message.text.toString().toLowerCase().includes(tharak[i]))
+      {
+        ctx.replyWithPhoto("https://pbs.twimg.com/media/DhuCBLxW0AAYMpr.jpg")
+        return;
+      }
+    }
+
+    reply = ["Har Har Mahadev!", "Bhaiyaa lankaa bechyuuu!", "Bhai LC Chalega?", "BT ho gayi yaar", "Sab lite hai", "Chill hai", "HG ke momos khane chalte hai aaj huehuehue", "Mai ek bot hu, meri dono taang nakli hai. Ek baar bot banate-banate COPS walo ko gussa aa gaya toh mujhe spam kar diya lekin dil ke bohot achhe hai, haal ke haal coud pr deploy bhi kar diya.", ""];
+    var n = Math.floor(Math.random() * reply.length);
+    ctx.reply(reply[n])
+
+  
 }
 
 export const stickerPhotoReply = async (ctx) => {
@@ -29,7 +48,7 @@ export const getInsult = (ctx) => {
   console.log(ctx.from.first_name,": /insult");
   const url = 'https://evilinsult.com/generate_insult.php?lang=en&type=json';
   axios.get(url).then(function (response) {
-    ctx.reply(response.data.insult)
+    ctx.replyWithMarkdown(response.data.insult.toString())
   }).catch(function (response) {
       console.log(response)
       ctx.reply(`Some error occured while fetching the result, please try again later!`);
