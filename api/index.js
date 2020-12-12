@@ -1,8 +1,9 @@
 import { Telegraf } from "telegraf";
+import { Extra } from "telegraf";
 import dotenv from 'dotenv';
 import { getBunnies, getCat, getDog, getDuck, getFox, starter } from './functions/animals';
 import { lingo } from './functions/lingo';
-import { easteregg, greet, stickerPhotoReply } from "./functions/utils";
+import { easteregg, getInsult, getQuotes, greet, stickerPhotoReply } from "./functions/utils";
 import { getMeme, getMemeCommands } from "./functions/memes";
 import { googleSearch, imageSearch } from "./functions/google-search";
 import { getGif } from "./functions/giphy";
@@ -13,10 +14,11 @@ import { cc, fmc, gnsc, sntc, ssc } from "./functions/councils/clubs";
 dotenv.config();
 const bot = new Telegraf(process.env.TOKEN);
 
-bot.start((ctx)=>{
+bot.start(async (ctx) =>{
     console.log(ctx.from.first_name,": /start");
-    const name = ctx.message.from ? ctx.message.from.first_name : 'Fachhe';
-    ctx.reply(`Hey ${name}! Welcome! type /help for list of commands`);
+    const name = ctx.message.from ? ctx.message.from.first_name : 'no-name-on-telegram.jpeg';
+    await ctx.replyWithAnimation('https://thumbs.gfycat.com/UnsungShallowDrafthorse-max-14mb.gif', Extra.caption('***Aaiyee aapkaa intezaar tha!***\n').markdown())
+    await ctx.replyWithMarkdown(`Hey ***${name}***! \n\nType /help for list of commands`);
 });
 
 bot.catch((err, ctx) => {
@@ -29,7 +31,7 @@ bot.catch((err, ctx) => {
 bot.help(async (ctx) => {
     console.log(ctx.from.first_name,": /help")
     
-    const helpMsg ="<strong>HELP-101</strong>\n\n/councils - Info about all councils and clubs!\n\n/dict or /dictionary - Search the meaning of any word you want! \n\n/lingo College ki lingo! \n\n/animals - Henlo human, do me a click, get a phomto!\n\n/meme or /memes - Who does not like memes?\n\n/google - Search anything!\n\n/image image search! directly from your chat window!\n\n/gif Search for <s>GFs</s> GIFs\n\n/help - For all available function\n\n(👀 there is an easter egg somewhere in this bot, try to find that command, if you do, a gift awaits you)";
+    const helpMsg ="<strong>HELP-101</strong>\n\n/councils - Info about all councils and clubs!\n\n/dict or /dictionary - Search the meaning of any word you want! \n\n/lingo College ki lingo! \n\n/animals - Henlo human, do me a click, get a phomto!\n\n/meme or /memes - Who does not like memes?\n\n/google - Search anything!\n\n/image image search! directly from your chat window!\n\n/gif Search for <s>GFs</s> GIFs\n\n/insult - burnol khareed lena pehle (also, trigger warning)\n\n/quotes - random quotes from tv series and movies\n\n/help - For all available function\n\n(👀 there is an easter egg somewhere in this bot, try to find that command, if you do, a gift awaits you)";
     try {
         await ctx.replyWithHTML(helpMsg);
     } catch (e) {
@@ -67,12 +69,16 @@ bot.command('image', (ctx) => imageSearch(ctx));
 
 bot.command('gif', (ctx) => getGif(ctx))
 
+bot.command('quotes', (ctx) => getQuotes(ctx))
+
 bot.command('councils', (ctx) => councils(ctx));
 bot.command('sntc', (ctx) => sntc(ctx));
 bot.command('ssc', (ctx) => ssc(ctx));
 bot.command('cc', (ctx) => cc(ctx));
 bot.command('gnsc', (ctx) => gnsc(ctx));
 bot.command('fmc', (ctx) => fmc(ctx));
+
+bot.command('insult', (ctx) => getInsult(ctx));
 
 bot.on('message', (ctx) => greet(ctx));
 bot.on(['sticker', 'photo'], (ctx) => stickerPhotoReply(ctx));
