@@ -78,10 +78,16 @@ bot.command('cc', (ctx) => cc(ctx));
 bot.command('gnsc', (ctx) => gnsc(ctx));
 bot.command('fmc', (ctx) => fmc(ctx));
 
+bot.command('easteregg', (ctx) => {
+    console.log(ctx.from.first_name,": /easteregg")
+    ctx.replyWithMarkdown("This is not the easter egg, but here is a hint:\n\n Hint lies in the video: [Easter egg](https://youtu.be/i1EU-_Qe_28)")
+})
+
 bot.command('insult', (ctx) => getInsult(ctx));
 
 bot.on('message', (ctx) => greet(ctx));
 bot.on(['sticker', 'photo'], (ctx) => stickerPhotoReply(ctx));
+
 
 module.exports = (req, resp) => {
     if (req.method === 'POST') bot.handleUpdate(req.body, resp)
