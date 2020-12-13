@@ -15,11 +15,11 @@ import { aishwary023, listDevs, m3luhan, arjupta, subodhk, davidgarg20, atpug22 
 dotenv.config();
 const bot = new Telegraf(process.env.TOKEN);
 
-bot.start(async(ctx) => {
+bot.start( (ctx) => {
     console.log(ctx.from.first_name, ": /start");
     const name = ctx.message.from ? ctx.message.from.first_name : 'no-name-on-telegram.jpeg';
-    await ctx.replyWithAnimation('https://thumbs.gfycat.com/UnsungShallowDrafthorse-max-14mb.gif', Extra.caption('***Aaiyee aapkaa intezaar tha!***\n').markdown())
-    await ctx.replyWithMarkdown(`Hey ***${name}***! \n\nType /help for list of commands`);
+     ctx.replyWithAnimation('https://thumbs.gfycat.com/UnsungShallowDrafthorse-max-14mb.gif', Extra.caption('***Aaiyee aapkaa intezaar tha!***\n').markdown())
+     ctx.replyWithMarkdown(`Hey ***${name}***! \n\nType /help for list of commands`);
 });
 
 bot.catch((err, ctx) => {
