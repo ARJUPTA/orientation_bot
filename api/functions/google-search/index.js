@@ -3,7 +3,7 @@ import axios from "axios";
 import { Extra } from "telegraf";
 
 export const googleSearch = (ctx) => {
-    console.log(ctx.from.first_name, ": /googleSearch")
+    console.log(ctx.from.first_name, ": " + ctx.update.message.text)
     const query = ctx.update.message.text.slice(7).trim();
     if(!query){
         ctx.replyWithMarkdown("Please enter a valid query!\nUse the format:\n***/google <query>***")
@@ -27,7 +27,7 @@ export const googleSearch = (ctx) => {
 }
 
 export const imageSearch = (ctx) => {
-    console.log(ctx.from.first_name, ": /imageSearch")
+    console.log(ctx.from.first_name, ": " + ctx.update.message.text)
     const query = ctx.update.message.text.slice(6).trim();
     if(!query){
         ctx.replyWithMarkdown("Please enter a valid query!\nUse the format:\n***/image <query>***")

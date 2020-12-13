@@ -31,7 +31,7 @@ bot.catch((err, ctx) => {
 bot.help(async (ctx) => {
     console.log(ctx.from.first_name,": /help")
     
-    const helpMsg ="<strong>HELP-101</strong>\n\n/councils - Info about all councils and clubs!\n\n/dict or /dictionary - Search the meaning of any word you want! \n\n/lingo College ki lingo! \n\n/animals - Henlo human, do me a click, get a phomto!\n\n/meme or /memes - Who does not like memes?\n\n/google - Search anything!\n\n/image image search! directly from your chat window!\n\n/gif Search for <s>GFs</s> GIFs\n\n/insult - burnol khareed lena pehle (also, trigger warning)\n\n/quotes - random quotes from tv series and movies\n\n/help - For all available function\n\n(👀 there is an easter egg somewhere in this bot, try to find that command, if you do, a gift awaits you)";
+    const helpMsg ="<strong>HELP-101</strong>\n\n/councils - Info about all councils and clubs!\n\n/dict or /dictionary - Search the meaning of any word you want! \n\n/lingo College ki lingo! \n\n/animals - Henlo human, do me a click, get a phomto!\n\n/meme or /memes - Who does not like memes?\n\n/google - Search anything!\n\n/image image search! directly from your chat window!\n\n/gif Search for <s>GFs</s> GIFs\n\n/insult - burnol khareed lena pehle (also, trigger warning)\n\n/quotes - random quotes from tv series and movies\n\n/dev - list of Dev Group members\n\n/help - For all available function\n\n(👀 there is an easter egg somewhere in this bot, try to find that command, if you do, a gift awaits you)";
     try {
         await ctx.replyWithHTML(helpMsg);
     } catch (e) {
@@ -40,70 +40,80 @@ bot.help(async (ctx) => {
     }
 });
 
-bot.command('animals', (ctx) => starter(ctx));
-bot.command('dog', (ctx) => getDog(ctx));
-bot.command('cat', (ctx) => getCat(ctx));
-bot.command('fox', (ctx) => getFox(ctx));
-bot.command('duck', (ctx) => getDuck(ctx));
-bot.command('bunny', (ctx) => getBunnies(ctx));
+bot.command('animals', async (ctx) => starter(ctx));
+bot.command('dog', async (ctx) => getDog(ctx));
+bot.command('cat', async (ctx) => getCat(ctx));
+bot.command('fox', async (ctx) => getFox(ctx));
+bot.command('duck', async (ctx) => getDuck(ctx));
+bot.command('bunny', async (ctx) => getBunnies(ctx));
 
-bot.command('lingo', (ctx) => lingo(ctx));
-bot.command('dict', (ctx) => wordSearch(ctx));
-bot.command('dictionary', (ctx) => wordSearch(ctx));
+bot.command('lingo', async (ctx) => lingo(ctx));
+bot.command('dict', async (ctx) => wordSearch(ctx));
+bot.command('dictionary', async (ctx) => wordSearch(ctx));
 
-bot.command('meme', (ctx) => getMemeCommands(ctx));
-bot.command('memes', (ctx) => getMemeCommands(ctx));
+bot.command('meme', async (ctx) => getMemeCommands(ctx));
+bot.command('memes', async (ctx) => getMemeCommands(ctx));
 bot.command('randomMeme', (ctx)=> getMeme(ctx, 'memes'));
 bot.command('wholesomeMeme', (ctx)=> getMeme(ctx, 'wholesomememes'));
 bot.command('indianMeme', (ctx)=> getMeme(ctx, 'IndianMeyMeys'));
 bot.command('memeEconomy', (ctx)=> getMeme(ctx, 'MemeEconomy'));
-bot.command('merrychristmas',(ctx) => easteregg(ctx));
+bot.command('merrychristmas',async (ctx) => easteregg(ctx));
 bot.command('historyMeme', (ctx)=> getMeme(ctx, 'HistoryMemes'));
-bot.command('animeMeme', (ctx) => getMeme(ctx, 'Animemes'));
-bot.command('toorealMeme', (ctx) => getMeme(ctx, '2meirl4meirl'));
-bot.command('cheems', (ctx)=> getMeme(ctx, 'dogelore'));
-bot.command('herapheri', (ctx)=> getMeme(ctx, 'HeraPheriMemes'));
+bot.command('animeMeme', async (ctx) => getMeme(ctx, 'Animemes'));
+bot.command('toorealMeme', async (ctx) => getMeme(ctx, '2meirl4meirl'));
+bot.command('cheems', async (ctx) => getMeme(ctx, 'dogelore'));
+bot.command('herapheri', async (ctx) => getMeme(ctx, 'HeraPheriMemes'));
 
-bot.command('google', (ctx) => googleSearch(ctx));
-bot.command('image', (ctx) => imageSearch(ctx));
+bot.command('google', async (ctx) => googleSearch(ctx));
+bot.command('image', async (ctx) => imageSearch(ctx));
 
-bot.command('gif', (ctx) => getGif(ctx))
+bot.command('gif', async (ctx) => getGif(ctx))
 
-bot.command('quotes', (ctx) => getQuotes(ctx))
+bot.command('quotes', async (ctx) => getQuotes(ctx))
 
-bot.command('councils', (ctx) => councils(ctx));
-bot.command('sntc', (ctx) => sntc(ctx));
-bot.command('ssc', (ctx) => ssc(ctx));
-bot.command('cc', (ctx) => cc(ctx));
-bot.command('gnsc', (ctx) => gnsc(ctx));
-bot.command('fmc', (ctx) => fmc(ctx));
+bot.command('councils', async (ctx) => councils(ctx));
+bot.command('sntc', async (ctx) => sntc(ctx));
+bot.command('ssc', async (ctx) => ssc(ctx));
+bot.command('cc', async (ctx) => cc(ctx));
+bot.command('gnsc', async (ctx) => gnsc(ctx));
+bot.command('fmc', async (ctx) => fmc(ctx));
 
-bot.command('easteregg', (ctx) => {
+bot.command('easteregg', async (ctx) => {
     console.log(ctx.from.first_name,": /easteregg")
     ctx.replyWithMarkdown("This is not the easter egg, but here is a hint:\n\n Hint lies in the video: [Easter egg](https://youtu.be/i1EU-_Qe_28)")
 })
 
-bot.command('egg', (ctx) => {
+bot.command('egg', async (ctx) => {
     ctx.reply('Wow smarty pants! Such intelligence much wow -_-')
 })
 
-bot.command('easter', (ctx) => {
+bot.command('easter', async (ctx) => {
     ctx.reply('Nikal, pehli fursat mai nikal')
 })
 
-bot.command('ganja', (ctx) => {
+bot.command('ganja', async (ctx) => {
     ctx.replyWithPhoto('https://i.ytimg.com/vi/j6aeSSKv7Sg/maxresdefault.jpg', Extra.caption('SS taken, reporting to DOSA!'))
 })
 
-bot.command('insult', (ctx) => getInsult(ctx));
+bot.command('insult', async (ctx) => getInsult(ctx));
 
-bot.on('message', (ctx) => greet(ctx));
-bot.on(['sticker', 'photo'], (ctx) => stickerPhotoReply(ctx));
+bot.command("/dev", async (ctx) => {
+    var reply = "Aishwary Saxena /aishwary023"
+    ctx.reply(reply);
+})
+
+bot.command('aishwary023', async (ctx) => {
+    var reply = "Find me at github.com/aishwary023 or @aishwary023."
+    ctx.reply(reply);
+})
+
+bot.on('message', async (ctx) => greet(ctx));
+bot.on(['sticker', 'photo'], async (ctx) => stickerPhotoReply(ctx));
 
 
-module.exports = (req, resp) => {
-    if (req.method === 'POST') bot.handleUpdate(req.body, resp)
-    else resp.status(200).send('Hello world :)!')
-};
+// module.exports = (req, resp) => {
+//     if (req.method === 'POST') bot.handleUpdate(req.body, resp)
+//     else resp.status(200).send('Hello world :)!')
+// };
 
 bot.launch();

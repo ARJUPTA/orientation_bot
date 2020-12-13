@@ -2,7 +2,7 @@
 import axios from "axios";
 
 export const getGif = (ctx) => {
-    console.log(ctx.from.first_name, ": /gifSearch")
+    console.log(ctx.from.first_name, ": " + ctx.update.message.text)
     const query = ctx.update.message.text.slice(4).trim().toLowerCase();
     if(!query){
         ctx.replyWithMarkdown("Please enter a valid query!\nUse the format:\n***/gif <query>***")

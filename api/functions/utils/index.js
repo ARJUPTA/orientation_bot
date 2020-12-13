@@ -27,7 +27,7 @@ export const greet = async (ctx) => {
       }
     }
 
-    reply = ["Har Har Mahadev!", "Bhaiyaa lankaa bechyuuu!", "Bhai LC Chalega?", "BT ho gayi yaar", "Sab lite hai", "Chill hai", "HG ke momos khane chalte hai aaj huehuehue", "Mai ek bot hu, meri dono taang nakli hai. Ek baar bot banate-banate COPS walo ko gussa aa gaya toh mujhe spam kar diya lekin dil ke bohot achhe hai, haal ke haal coud pr deploy bhi kar diya.", ""];
+    reply = ["Har Har Mahadev!", "Bhaiyaa lankaa bechyuuu!", "Bhai LC Chalega?", "BT ho gayi yaar", "Sab lite hai", "Chill hai", "HG ke momos khane chalte hai aaj huehuehue", "Mai ek bot hu, meri dono taang nakli hai. Ek baar bot banate-banate COPS walo ko gussa aa gaya toh mujhe spam kar diya lekin dil ke bohot achhe hai, haal ke haal cloud pr deploy kar diya.", ""];
     var n = Math.floor(Math.random() * reply.length);
     ctx.reply(reply[n])
 

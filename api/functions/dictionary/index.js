@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Extra } from 'telegraf';
 
 export const wordSearch = async (ctx) => {
-  console.log(ctx.from.first_name, ": /dictionary")
+  console.log(ctx.from.first_name, ": " + ctx.message.text.toString().toLowerCase())
   const content = ctx.message.text.toString().toLowerCase().split(' ')
   const usageFormat = `Usage format: ${content[0]} <Language code> <Language Word>\n\n*Example:*\n\n*${content[0]} en hello*: This will search for word hello in english language.\n\n*${content[0]} hi namaste*: This will search for word namaste in hindi language.`
   const languageList = `*en* - English\n*hi* - Hindi\n*fr* - French\n*ja* - Japanese\n*ru* - Russian\n*de* - German\n*it* - Italian\n*ko* - Korean\n*pt-BR* - Brazilian Portugese\n*ar* - Arabic\n*tr* - Turkish\n*es* - Spanish`
