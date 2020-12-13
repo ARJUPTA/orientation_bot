@@ -10,7 +10,7 @@ import { getGif } from "./functions/giphy";
 import { wordSearch } from "./functions/dictionary";
 import { councils } from "./functions/councils";
 import { cc, fmc, gnsc, sntc, ssc } from "./functions/councils/clubs";
-import { aishwary023, listDevs, m3luhan, arjupta } from "./functions/devs";
+import { aishwary023, listDevs, m3luhan, arjupta, subodhk } from "./functions/devs";
 
 dotenv.config();
 const bot = new Telegraf(process.env.TOKEN);
@@ -105,6 +105,7 @@ bot.command('devs', async (ctx) => listDevs(ctx));
 bot.command('aishwary023', async (ctx) => aishwary023(ctx));
 bot.command('meluhan', async (ctx) => m3luhan(ctx));
 bot.command('arjupta', async (ctx) => arjupta(ctx));
+bot.command('subodhk', async (ctx) => subodhk(ctx));
 
 bot.on('message', async (ctx) => greet(ctx));
 bot.on(['sticker', 'photo'], async (ctx) => stickerPhotoReply(ctx));
