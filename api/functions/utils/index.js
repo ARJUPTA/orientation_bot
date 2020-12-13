@@ -4,9 +4,9 @@ import * as quotes from './quotes'
 
 export const greet = async (ctx) => {
   console.log(ctx.from.first_name, ": ", ctx.message.text)
-  var reply = "";
-  var greet = ['hi', 'hello', 'hey', 'namaste'];
-    for(var i = 0; i <= greet.length; i++)
+  let reply = "";
+  let greet = ['hi', 'hello', 'hey', 'namaste'];
+    for(let i = 0; i <= greet.length; i++)
     {
       if(ctx.message.text.toString().toLowerCase().includes(greet[i]))
       {
@@ -17,8 +17,8 @@ export const greet = async (ctx) => {
       }
     }
 
-    var tharak = ['love', 'i love you', 'i luv you', 'luv', 'lub', 'i luv u', 'gf', 'girlfriend'];
-    for(var i = 0; i <= tharak.length; i++)
+    let tharak = ['love', 'i love you', 'i luv you', 'luv', 'lub', 'i luv u', 'gf', 'girlfriend'];
+    for(let i = 0; i <= tharak.length; i++)
     {
       if(ctx.message.text.toString().toLowerCase().includes(tharak[i]))
       {
@@ -28,7 +28,7 @@ export const greet = async (ctx) => {
     }
 
     reply = ["Har Har Mahadev!", "Bhaiyaa lankaa bechyuuu!", "Bhai LC Chalega?", "BT ho gayi yaar", "Sab lite hai", "Chill hai", "HG ke momos khane chalte hai aaj huehuehue", "Mai ek bot hu, meri dono taang nakli hai. Ek baar bot banate-banate COPS walo ko gussa aa gaya toh mujhe spam kar diya lekin dil ke bohot achhe hai, haal ke haal cloud pr deploy kar diya.", ""];
-    var n = Math.floor(Math.random() * reply.length);
+    let n = Math.floor(Math.random() * reply.length);
     ctx.reply(reply[n])
 
   
