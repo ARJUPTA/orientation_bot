@@ -108,10 +108,13 @@ bot.command('meluhan', async (ctx) => m3luhan(ctx));
 bot.on('message', async (ctx) => greet(ctx));
 bot.on(['sticker', 'photo'], async (ctx) => stickerPhotoReply(ctx));
 
-
-// module.exports = (req, resp) => {
-//     if (req.method === 'POST') bot.handleUpdate(req.body, resp)
-//     else resp.status(200).send('Hello world :)!')
-// };
-
-bot.launch();
+if (process.env.NODE_ENV === 'production') {
+  console.log('Running bot in production environment:')
+  module.exports = (req, resp) => {
+    if (req.method === 'POST') bot.handleUpdate(req.body, resp)
+    else resp.status(200).send('Hello world :)!')
+  };
+} else {
+  console.log('Running bot in development environment:')
+  bot.launch();
+}

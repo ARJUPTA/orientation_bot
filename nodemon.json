@@ -1,5 +1,5 @@
 {
-  "exec": "npm-run-all build serve",
+  "exec": "NODE_ENV=development npm-run-all build serve",
   "watch": [
     "api/*",
     "dist/*"

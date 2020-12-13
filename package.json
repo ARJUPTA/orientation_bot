@@ -29,7 +29,7 @@
     "build": "npm-run-all clean transpile",
     "serve": "node ./dist/index.js",
     "dev": "nodemon",
-    "prod": "npm-run-all build serve"
+    "prod": "NODE_ENV=production npm-run-all build serve"
   },
   "author": "",
   "license": "ISC"
