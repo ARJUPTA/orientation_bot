@@ -58,6 +58,8 @@ export const subodhk = async (ctx) => {
   } catch(e) {
     console.log('error =', e.message)
     await ctx.reply(`Some error occured, please try later! Sorry for inconvenience\n:)`)
+  }
+}
 
 export const davidgarg20 = async (ctx) => {
   try {
