@@ -18,8 +18,7 @@ const bot = new Telegraf(process.env.TOKEN);
 bot.start( async (ctx) => {
     console.log(ctx.from.first_name, ": /start");
     const name = ctx.message.from ? ctx.message.from.first_name : 'no-name-on-telegram.jpeg';
-    await ctx.replyWithAnimation('https://thumbs.gfycat.com/UnsungShallowDrafthorse-max-14mb.gif', Extra.caption('***Aaiyee aapkaa intezaar tha!***\n').markdown())
-    await ctx.replyWithMarkdown(`Hey ***${name}***! \n\nType /help for list of commands`);
+    await ctx.replyWithAnimation('https://thumbs.gfycat.com/UnsungShallowDrafthorse-max-14mb.gif', Extra.caption('***Aaiyee aapkaa intezaar tha!***\n\nHey ***${name}***! \n\nType /help for list of commands').markdown());
 });
 
 bot.catch((err, ctx) => {
