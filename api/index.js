@@ -10,34 +10,35 @@ import { getGif } from "./functions/giphy";
 import { wordSearch } from "./functions/dictionary";
 import { councils } from "./functions/councils";
 import { cc, fmc, gnsc, sntc, ssc } from "./functions/councils/clubs";
+import { aishwary023, listDevs, m3luhan } from "./functions/devs";
 
 dotenv.config();
 const bot = new Telegraf(process.env.TOKEN);
 
-bot.start(async (ctx) =>{
-    console.log(ctx.from.first_name,": /start");
-    const name = ctx.message.from ? ctx.message.from.first_name : 'no-name-on-telegram.jpeg';
-    await ctx.replyWithAnimation('https://thumbs.gfycat.com/UnsungShallowDrafthorse-max-14mb.gif', Extra.caption('***Aaiyee aapkaa intezaar tha!***\n').markdown())
-    await ctx.replyWithMarkdown(`Hey ***${name}***! \n\nType /help for list of commands`);
+bot.start(async (ctx) => {
+  console.log(ctx.from.first_name, ": /start");
+  const name = ctx.message.from ? ctx.message.from.first_name : 'no-name-on-telegram.jpeg';
+  await ctx.replyWithAnimation('https://thumbs.gfycat.com/UnsungShallowDrafthorse-max-14mb.gif', Extra.caption('***Aaiyee aapkaa intezaar tha!***\n').markdown())
+  await ctx.replyWithMarkdown(`Hey ***${name}***! \n\nType /help for list of commands`);
 });
 
 bot.catch((err, ctx) => {
-    console.log('Error, ', ctx.from.first_name, " - ", err)
-    console.log(err.message)
-    const errMsg = "Did not quite get what you said, please contact @aishwary023 for the issue!";
-    ctx.reply(errMsg);
+  console.log('Error, ', ctx.from.first_name, " - ", err)
+  console.log(err.message)
+  const errMsg = "Did not quite get what you said, please contact @aishwary023 for the issue!";
+  ctx.reply(errMsg);
 });
 
 bot.help(async (ctx) => {
-    console.log(ctx.from.first_name,": /help")
-    
-    const helpMsg ="<strong>HELP-101</strong>\n\n/councils - Info about all councils and clubs!\n\n/dict or /dictionary - Search the meaning of any word you want! \n\n/lingo College ki lingo! \n\n/animals - Henlo human, do me a click, get a phomto!\n\n/meme or /memes - Who does not like memes?\n\n/google - Search anything!\n\n/image image search! directly from your chat window!\n\n/gif Search for <s>GFs</s> GIFs\n\n/insult - burnol khareed lena pehle (also, trigger warning)\n\n/quotes - random quotes from tv series and movies\n\n/dev - list of Dev Group members\n\n/help - For all available function\n\n(👀 there is an easter egg somewhere in this bot, try to find that command, if you do, a gift awaits you)";
-    try {
-        await ctx.replyWithHTML(helpMsg);
-    } catch (e) {
-        console.log(e)
-        await ctx.reply('Facing server issues, try again later.\nSorry for inconvenience.')
-    }
+  console.log(ctx.from.first_name, ": /help")
+
+  const helpMsg = "<strong>HELP-101</strong>\n\n/councils - Info about all councils and clubs!\n\n/dict or /dictionary - Search the meaning of any word you want! \n\n/lingo College ki lingo! \n\n/animals - Henlo human, do me a click, get a phomto!\n\n/meme or /memes - Who does not like memes?\n\n/google - Search anything!\n\n/image image search! directly from your chat window!\n\n/gif Search for <s>GFs</s> GIFs\n\n/insult - burnol khareed lena pehle (also, trigger warning)\n\n/quotes - random quotes from tv series and movies\n\n/dev or /devs - list of Dev Group members\n\n/help - For all available function\n\n(👀 there is an easter egg somewhere in this bot, try to find that command, if you do, a gift awaits you)";
+  try {
+    await ctx.replyWithHTML(helpMsg);
+  } catch (e) {
+    console.log(e)
+    await ctx.reply('Facing server issues, try again later.\nSorry for inconvenience.')
+  }
 });
 
 bot.command('animals', async (ctx) => starter(ctx));
@@ -53,12 +54,12 @@ bot.command('dictionary', async (ctx) => wordSearch(ctx));
 
 bot.command('meme', async (ctx) => getMemeCommands(ctx));
 bot.command('memes', async (ctx) => getMemeCommands(ctx));
-bot.command('randomMeme', (ctx)=> getMeme(ctx, 'memes'));
-bot.command('wholesomeMeme', (ctx)=> getMeme(ctx, 'wholesomememes'));
-bot.command('indianMeme', (ctx)=> getMeme(ctx, 'IndianMeyMeys'));
-bot.command('memeEconomy', (ctx)=> getMeme(ctx, 'MemeEconomy'));
-bot.command('merrychristmas',async (ctx) => easteregg(ctx));
-bot.command('historyMeme', (ctx)=> getMeme(ctx, 'HistoryMemes'));
+bot.command('randomMeme', (ctx) => getMeme(ctx, 'memes'));
+bot.command('wholesomeMeme', (ctx) => getMeme(ctx, 'wholesomememes'));
+bot.command('indianMeme', (ctx) => getMeme(ctx, 'IndianMeyMeys'));
+bot.command('memeEconomy', (ctx) => getMeme(ctx, 'MemeEconomy'));
+bot.command('merrychristmas', async (ctx) => easteregg(ctx));
+bot.command('historyMeme', (ctx) => getMeme(ctx, 'HistoryMemes'));
 bot.command('animeMeme', async (ctx) => getMeme(ctx, 'Animemes'));
 bot.command('toorealMeme', async (ctx) => getMeme(ctx, '2meirl4meirl'));
 bot.command('cheems', async (ctx) => getMeme(ctx, 'dogelore'));
@@ -79,33 +80,30 @@ bot.command('gnsc', async (ctx) => gnsc(ctx));
 bot.command('fmc', async (ctx) => fmc(ctx));
 
 bot.command('easteregg', async (ctx) => {
-    console.log(ctx.from.first_name,": /easteregg")
-    ctx.replyWithMarkdown("This is not the easter egg, but here is a hint:\n\n Hint lies in the video: [Easter egg](https://youtu.be/i1EU-_Qe_28)")
+  console.log(ctx.from.first_name, ": /easteregg")
+  ctx.replyWithMarkdown("This is not the easter egg, but here is a hint:\n\n Hint lies in the video: [Easter egg](https://youtu.be/i1EU-_Qe_28)")
 })
 
 bot.command('egg', async (ctx) => {
-    ctx.reply('Wow smarty pants! Such intelligence much wow -_-')
+  ctx.reply('Wow smarty pants! Such intelligence much wow -_-')
 })
 
 bot.command('easter', async (ctx) => {
-    ctx.reply('Nikal, pehli fursat mai nikal')
+  ctx.reply('Nikal, pehli fursat mai nikal')
 })
 
 bot.command('ganja', async (ctx) => {
-    ctx.replyWithPhoto('https://i.ytimg.com/vi/j6aeSSKv7Sg/maxresdefault.jpg', Extra.caption('SS taken, reporting to DOSA!'))
+  ctx.replyWithPhoto('https://i.ytimg.com/vi/j6aeSSKv7Sg/maxresdefault.jpg', Extra.caption('SS taken, reporting to DOSA!'))
 })
 
 bot.command('insult', async (ctx) => getInsult(ctx));
 
-bot.command("/dev", async (ctx) => {
-    var reply = "Aishwary Saxena /aishwary023"
-    ctx.reply(reply);
-})
+bot.command('dev', async (ctx) => listDevs(ctx));
+bot.command('devs', async (ctx) => listDevs(ctx));
 
-bot.command('aishwary023', async (ctx) => {
-    var reply = "Find me at github.com/aishwary023 or @aishwary023."
-    ctx.reply(reply);
-})
+// connect you function to the command here.
+bot.command('aishwary023', async (ctx) => aishwary023(ctx));
+bot.command('meluhan', async (ctx) => m3luhan(ctx));
 
 bot.on('message', async (ctx) => greet(ctx));
 bot.on(['sticker', 'photo'], async (ctx) => stickerPhotoReply(ctx));
