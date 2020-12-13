@@ -19,7 +19,7 @@ bot.start( async (ctx) => {
     console.log(ctx.from.first_name, ": /start");
     const name = ctx.message.from ? ctx.message.from.first_name : 'no-name-on-telegram.jpeg';
     const caption = '***Aaiyee aapkaa intezaar tha!***\n\nHey ***'+name+'***! \n\nType /help for list of commands';
-    await ctx.replyWithAnimation('https://thumbs.gfycat.com/UnsungShallowDrafthorse-max-14mb.gif', Extra.caption().markdown());
+    await ctx.replyWithAnimation('https://thumbs.gfycat.com/UnsungShallowDrafthorse-max-14mb.gif', Extra.caption(caption).markdown());
 });
 
 bot.catch((err, ctx) => {
