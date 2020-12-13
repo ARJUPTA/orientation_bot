@@ -21,7 +21,7 @@ export const listDevs = async (ctx) => {
 }
 export const aishwary023 = async (ctx) => {
   try {
-    await ctx.reply('Find me at github.com/aishwary023 or @aishwary023.')
+    await ctx.reply('Hi people! You can find me at github.com/aishwary023 or @aishwary023.')
   } catch(e) {
     console.log('error =', e.message)
     await ctx.reply(`Some error occured, please try later! Sorry for inconvenience\n:)`)
