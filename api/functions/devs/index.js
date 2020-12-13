@@ -6,6 +6,7 @@ const DEVS = [
   'Aishwary Saxena /aishwary023',
   'Purushottam Tiwari /meluhan',
   'Arjun Gupta /arjupta',
+  'The Subodh Verma /subodhk',
   'David Garg /davidgarg20'
 ]
 export const listDevs = async (ctx) => {
@@ -47,6 +48,16 @@ export const arjupta = async (ctx) => {
     console.log('error =', e.message)
     await ctx.reply(`Some error occured, please try later! Sorry for inconvenience\n:)`)
     return
+  }
+}
+
+
+export const subodhk = async (ctx) => {
+  try {
+    await ctx.reply('Hey sexyy! Wanna have some fun? Follow me at github.com/subodhk01 or just ping me here @subodhk01')
+  } catch(e) {
+    console.log('error =', e.message)
+    await ctx.reply(`Some error occured, please try later! Sorry for inconvenience\n:)`)
   }
 }
 
