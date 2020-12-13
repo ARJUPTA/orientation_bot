@@ -97,7 +97,7 @@ bot.command('ganja', async (ctx) => {
 
 bot.command('insult', async (ctx) => getInsult(ctx));
 
-bot.command("/dev", async (ctx) => {
+bot.command("devs", async (ctx) => {
     var reply = "Aishwary Saxena /aishwary023"
     ctx.reply(reply);
 })
