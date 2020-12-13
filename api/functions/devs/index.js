@@ -8,7 +8,9 @@ const DEVS = [
     'Arjun Gupta /arjupta',
     'Aryaman Gupta /atpug22',
     'Subodh Verma /subodhk',
-    'David Garg /davidgarg20'
+    'David Garg /davidgarg20',
+    'Shubhanshu Saxena /shubhanshu02',
+    'Lakshya Singh /king11'
 ]
 export const listDevs = async(ctx) => {
     let reply = 'Following people are part of COPS dev group.\n\n'
@@ -81,4 +83,22 @@ export const davidgarg20 = async (ctx) => {
   }
 }
 
+export const shubhanshu02 = async(ctx) => {
+  try {
+    await ctx.reply('Hi peeps! Catch me at github.com/shubhanshu02 or @shubhanshu_02.');
+  } catch (e) {
+    console.log('error =', e.message);
+    await ctx.reply(`Some error occured, please try later! Sorry for inconvenience\n:)`);
+    return;
+  }
+}
 // Other devs can add function for your command here.
+export const king11 = async(ctx) => {
+  try {
+    await ctx.replyWithMarkdown(`Hi future <developers/>! checkout my projects at [king-11](github.com/king-11) or you can ping me at [@x_tegrat](https://www.instagram.com/x_tegrat/).`);
+  } catch (e) {
+    console.log('error =', e.message);
+    await ctx.reply(`Some error occured, please try later! Sorry for inconvenience\n:)`);
+    return;
+  }
+}
