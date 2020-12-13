@@ -6,7 +6,7 @@ const DEVS = [
     'Aishwary Saxena /aishwary023',
     'Purushottam Tiwari /meluhan',
     'Arjun Gupta /arjupta',
-    'Aryaman Gupta /atpug22'
+    'Aryaman Gupta /atpug22',
     'Subodh Verma /subodhk',
     'David Garg /davidgarg20'
 ]
